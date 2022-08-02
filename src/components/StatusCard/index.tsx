@@ -10,7 +10,7 @@ interface StatusCardProps {
 
 const StatusCard = ({ data, url }: StatusCardProps) => {
   return (
-    <Card elevation={4} sx={{ width: 300, height: 150, borderRadius: 5 }}>
+    <Card elevation={4} sx={{ width: 300, height: 125, borderRadius: 5 }}>
       <CardHeader
         avatar={
           data && data.success ? (
@@ -19,7 +19,7 @@ const StatusCard = ({ data, url }: StatusCardProps) => {
             <CancelIcon fontSize="large" color="error" />
           )
         }
-        title={url}
+        title={url.replace("https://api.factoryfour.com", "")}
         subheader={data ? data.version : 'Network Error'}
         sx={{ padding: '16px 16px 0px' }}
       />
@@ -33,10 +33,6 @@ const StatusCard = ({ data, url }: StatusCardProps) => {
             <Typography variant="body2">
               <span style={{ fontWeight: "bold" }}>Message: </span>
               {data.message}
-            </Typography>
-            <Typography variant="body2">
-              <span style={{ fontWeight: "bold" }}>Time: </span>
-              {new Date(data.time).toLocaleTimeString()}
             </Typography>
           </>
         ) : (
