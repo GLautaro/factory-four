@@ -19,7 +19,7 @@ const StatusCard = ({ data, url }: StatusCardProps) => {
             <CancelIcon fontSize="large" color="error" />
           )
         }
-        title={url.replace("https://api.factoryfour.com", "")}
+        title={url}
         subheader={data ? data.version : 'Network Error'}
         sx={{ padding: '16px 16px 0px' }}
       />
