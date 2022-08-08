@@ -2,15 +2,13 @@
 import { useEffect, useState, useCallback } from "react";
 import axios, { AxiosError } from "axios";
 
-type UseFetchResult = [any[], boolean, any[]];
+type UseFetchResult = [any[], any[]];
 
 const useFetch = (endpoints: string[]): UseFetchResult => {
   const [data, setData] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState<any[]>([]);
 
   const fetchData = useCallback(async (endpoints: string[]): Promise<any> => {
-    setLoading(true);
     const temp: any = [];
     const errors: any = [];
 
@@ -35,14 +33,13 @@ const useFetch = (endpoints: string[]): UseFetchResult => {
 
     setData(temp);
     setErrors(errors);
-    setLoading(false);
   }, []);
 
   useEffect(() => {
     fetchData(endpoints);
   }, [fetchData, endpoints]);
 
-  return [data, loading, errors];
+  return [data, errors];
 };
 
 export default useFetch;

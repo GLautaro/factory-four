@@ -1,11 +1,11 @@
-import { Backdrop, CircularProgress, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import React from "react";
 import { factoryFourUrls } from "../../entities/constants";
 import useFetch from "../../hooks/useFetch";
 import StatusCard from "../StatusCard";
 
 const Dashboard = () => {
-  const [data, loading, errors] = useFetch(factoryFourUrls);
+  const [data, errors] = useFetch(factoryFourUrls);  
 
   return (
     <Grid container sx={{ mb: 4 }}>
@@ -14,12 +14,6 @@ const Dashboard = () => {
           FactoryFour APIs Status
         </Typography>
       </Grid>
-
-      {loading && (
-        <Backdrop open={loading}>
-          <CircularProgress />
-        </Backdrop>
-      )}
 
       <Grid container spacing={2}>
         {!!errors.length &&
